@@ -1,0 +1,67 @@
+$font-colors: (
+    color-gray-0: map-get($map: $color-gray, $key: 0),
+    color-gray-1: map-get($map: $color-gray, $key: 1),
+    color-primary: $color-primary,
+);
+
+$font-styles: (
+    title-1: (
+        font-weight: 700, 
+        font-size: 1.125rem, 
+        line-height: 1.75rem,
+        colors: $font-colors
+    ),
+    title-2: (
+        font-weight: 600,
+         font-size: 1rem, 
+         line-height: 1.625rem,
+         colors: $font-colors
+    ),
+    headline: (
+        font-weight: 400, 
+        font-size: .75rem, 
+        line-height: 1.375rem,
+        colors: $font-colors
+    ),
+    headline-bold: (
+        font-weight: 600, 
+        font-size: .75rem, 
+        line-height: 1.125rem,
+        colors: $font-colors
+    ),
+    paragraph: (
+        font-weight: 400, 
+        font-size: 1rem, 
+        line-height: 1.125rem,
+        colors: $font-colors
+    ),
+    btn:(
+        font-weight: 500, 
+        font-size: 1rem, 
+        line-height: 1.625rem,
+        colors: (
+            color-white: #FFFFFF,
+        )
+    ),
+);
+
+
+
+:root {
+    font-family: 'Inter', sans-serif;
+}
+
+.font {
+    @each $style, $properties in $font-styles {
+        &-#{$style} {
+            font-weight: map-get($properties, font-weight);
+            font-size: map-get($properties, font-size);
+            line-height: map-get($properties, line-height);
+        }
+        @each $color, $hex in map-get($properties, colors) {
+            &-#{$style}--#{$color} {
+                color: $hex;
+            }
+        }
+    }
+}

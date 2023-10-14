@@ -1,0 +1,21 @@
+.btn{
+    background-color: $color-primary;
+    border: none;
+    height: 3rem;
+    padding: 0 1.375rem;
+    border-radius: 4px;
+    gap: .625rem;
+    &:hover{
+        background-color: $color-primary-focus;
+    }
+
+    &.btn--disable{
+        background-color: map-get($map: $color-gray, $key: 1);
+        &:hover{
+            background-color: map-get($map: $color-gray, $key: 2);
+        }
+    }
+    &.btn--negative{
+        background-color: $color-primary-negative;
+    }
+}

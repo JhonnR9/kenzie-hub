@@ -1,9 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Header from './components/Header';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './styles/index.scss';
+
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,8 +12,7 @@ function App() {
 
   return (
     <>
-      <button onClick={notify}>Notify !</button>
-      <ToastContainer />
+      <Header></Header>
     </>
   )
 }
