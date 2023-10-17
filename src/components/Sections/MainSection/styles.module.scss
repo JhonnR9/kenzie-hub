@@ -1,0 +1,13 @@
+@import  '../../../styles/index.scss';
+
+.container{
+    @include main-container;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    margin-top: 2.5rem;
+
+    @media (min-width:1200px){
+        width: calc(70% - 2rem);
+    }
+}

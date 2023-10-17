@@ -5,8 +5,9 @@
     padding: 0 1rem;
     background-color: map-get($map: $color-gray, $key: 2);
     outline: none;
-    color: map-get($map: $color-gray, $key: 1);
+    color: map-get($map: $color-gray, $key: 0);
     &:focus{
         outline: 2px solid map-get($map: $color-gray, $key: 0);
+
     }
 }

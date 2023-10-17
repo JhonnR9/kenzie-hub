@@ -1,0 +1,26 @@
+@import  '../../../styles/index.scss';
+
+.container{
+    $border : 1px solid map-get($map: $color-gray, $key: 2);
+    border-top: $border;
+    border-bottom: $border;
+    height: 18vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+.item{
+    @include main-container;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 50%;
+    
+    @media (min-width:1200px){
+        width: calc(70% - 2rem);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

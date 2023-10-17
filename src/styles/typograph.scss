@@ -49,6 +49,7 @@ $font-styles: (
 
 :root {
     font-family: 'Inter', sans-serif;
+    background-color: map-get($map: $color-gray, $key: 4);
 }
 
 .font {

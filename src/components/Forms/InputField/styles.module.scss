@@ -1,0 +1,15 @@
+@import  '../../../styles/index.scss';
+
+.flexbox{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+}
+
+.error{
+    display: inline-block;
+    color: $color-error;
+    align-self:  flex-start;
+    justify-self: left;
+}

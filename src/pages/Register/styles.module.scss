@@ -1,0 +1,6 @@
+@import  '../../styles/index.scss';
+    
+.main{
+    background-color: map-get($map: $color-gray, $key: 4);
+    padding-bottom: 2.5rem;
+}

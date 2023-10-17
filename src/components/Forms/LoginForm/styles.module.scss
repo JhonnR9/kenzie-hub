@@ -1,0 +1,30 @@
+@import  '../../../styles/index.scss';
+
+.form{
+    @include main-container;
+    background-color: map-get($map: $color-gray, $key: 3);
+    display: flex;
+    flex-direction: column;
+    min-height: calc(82vh - 3.5rem);
+    justify-content: center;
+    gap: 20px;
+    padding: 1.5rem 1rem;
+
+    h1{
+        align-self: center;
+    }
+    span{
+        align-self: center;
+        margin-top: 10px;
+    }
+
+   
+
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+}
