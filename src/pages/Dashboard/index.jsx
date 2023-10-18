@@ -3,9 +3,16 @@ import UserSection from '../../components/Sections/UserSection';
 import MainSection from '../../components/Sections/MainSection';
 import HeaderButton from '../../components/Headers/HeaderButton';
 import Styles from './styles.module.scss';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-const Dashboard = () => {
-    
+const Dashboard = () => {const navigate = useNavigate();
+   useEffect(()=> {
+    if(!localStorage.getItem("@TOKEN")){
+      navigate('/login');
+    }
+   }, []);
+   
   return (
     <>
         <HeaderButton buttonName={"Voltar"} dashboard={true}/>

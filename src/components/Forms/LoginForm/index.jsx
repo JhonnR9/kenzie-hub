@@ -4,8 +4,9 @@ import {useForm} from "react-hook-form";
 import {loginFormSchema, inputs} from "./loginFormSchema";
 import {zodResolver} from "@hookform/resolvers/zod";
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import api from '../../../services/api';
+
 
 const LoginForm = () => {
   const {
@@ -19,9 +20,26 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = (formData) => {
-    console.log(formData)
+    userLogin(formData);
+    
 
   }
+
+  const userLogin = async (formData) => {
+    try {
+      const {data, status, message} =  api.post('/sessions', formData)
+      if(status == 200){
+        toast.success("Usuario criado com sucesso!");
+        localStorage.setItem("@TOKEN", data.token);
+      }else{
+        toast.error(message);
+      }
+     
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
 
   const handleRegisterButton = (e) => {
     e.preventDefault();

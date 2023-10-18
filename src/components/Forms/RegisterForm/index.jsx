@@ -3,8 +3,8 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {registerFormSchema, registerInputs} from "./registerFormSchema";
 import Styles from './styles.module.scss';
-
-
+import api from '../../../services/api';
+import { toast } from 'react-toastify';
 
 const RegisterForm = () => {
 
@@ -16,9 +16,25 @@ const RegisterForm = () => {
 
   });
 
-  const onSubmit = (formData) => {
-    console.log(formData)
+  const onSubmit = async (formData) => {
+    delete formData[registerInputs.confirmPassword];
+     await userRegister(formData);
+  }
 
+  const userRegister = async (formData) => {
+    try {
+      const {data, status, message} = await api.post('/users', formData)
+      console.log(data)
+      if(status == 200){
+        toast.success("Usuario criado com sucesso!");
+      }else{
+        toast.error(message);
+      }
+
+     
+    } catch (error) {
+      toast.error(error.message);
+    }
   }
 
   return (
@@ -32,8 +48,10 @@ const RegisterForm = () => {
         <InputFild label="Bio" errors={errors[registerInputs.about]} placeholder={'Fale sobre voce'} {...register(registerInputs.about)}/>
         <InputFild label="Contato" errors={errors[registerInputs.contact]} placeholder={'Opçao de contato'} {...register(registerInputs.contact)}/>
         <select className='input' {...register(registerInputs.module)} >
-            <option value="1">"Primeiro Módulo (Introducao ao Frontend)"</option>
-            <option value="2">"Segundo Módulo (Frontend avançado)"</option>
+            <option value="Primeiro módulo (Introdução ao Frontend)">"Primeiro módulo (Introdução ao Frontend)"</option>
+            <option value="Segundo módulo (Frontend Avançado)">"Segundo módulo (Frontend Avançado)"</option>
+            <option value="Terceiro módulo (Introdução ao Backend)">"Terceiro módulo (Introdução ao Backend)"</option>
+            <option value="Quarto módulo (Backend Avançado)">"Quarto módulo (Backend Avançado)"</option>
         </select>
         <button type='submit' className='btn btn--negative font-btn font-btn--color-white'>Cadastrar</button>
         

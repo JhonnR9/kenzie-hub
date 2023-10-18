@@ -5,7 +5,7 @@ export const registerInputs = {
     email: "email",
     password: "password",
     confirmPassword: "confirmPassword",
-    about: "about",
+    about: "bio",
     contact: "contact",
     module: "curse_module",
 }
