@@ -23,7 +23,6 @@ const LoginForm = () => {
   const onSubmit = (formData) => {
     userLogin(formData);
     
-
   }
 
   const userLogin = async (formData) => {
@@ -36,7 +35,8 @@ const LoginForm = () => {
          if(status === 200){
            toast.success("Login efetuado com sucesso!");
            localStorage.setItem("@TOKEN", data.token);
-           console.log(data);
+           navigate("/");
+
          }else {
            toast.error(message);
          }
@@ -54,7 +54,7 @@ const LoginForm = () => {
     const storedToken= localStorage.getItem("@TOKEN");
 
     if (storedToken) {
-       navigate("/");
+      // navigate("/");
     }
 
   }, []);
