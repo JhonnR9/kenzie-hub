@@ -18,15 +18,25 @@ const RegisterForm = () => {
 
   const onSubmit = async (formData) => {
     delete formData[registerInputs.confirmPassword];
-     await userRegister(formData);
+     userRegister(formData);
   }
 
   const userRegister = async (formData) => {
+    const newFormData = {
+      email: formData.email,
+      password: "123456",
+      name: "John Doe",
+      bio: "Lorem ipsum dolor emet",
+      contact: "linkedin/in/johndoe",
+      course_module: "Segundo Módulo (Frontend avançado)"
+    }
     try {
-      const {data, status, message} = await api.post('/users', formData)
-      console.log(data)
-      if(status == 200){
+      console.log(newFormData)
+      const {status, message} = await api.post('/users', newFormData);
+
+      if(status == 201){
         toast.success("Usuario criado com sucesso!");
+       
       }else{
         toast.error(message);
       }
