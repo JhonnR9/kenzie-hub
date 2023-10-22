@@ -4,11 +4,12 @@ import MainSection from '../../components/Sections/MainSection';
 import HeaderButton from '../../components/Headers/HeaderButton';
 import Styles from './styles.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useContext, useState } from "react";
+import { UserAuthContext } from '../../providers/UserAuthContext';
 import api from '../../services/api';
 
 const Dashboard = () => {const navigate = useNavigate();
-  const [userData, setUserData] = useState();
+  const {userData, setUserData} = useContext(UserAuthContext);
 
    useEffect( ()=> {
     const storedToken = localStorage.getItem("@TOKEN");
@@ -49,7 +50,7 @@ const Dashboard = () => {const navigate = useNavigate();
     <>
         <HeaderButton buttonName={"Voltar"} dashboard={true}/>
         <main className={Styles.main}>
-           {userData ? <UserSection userName={userData.name} module={userData.course_module}/>: null}
+           <UserSection userName={userData?.name} module={userData?.course_module}/>
            <MainSection/>
         </main>
     </>

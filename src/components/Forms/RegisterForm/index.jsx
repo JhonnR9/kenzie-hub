@@ -3,10 +3,13 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {registerFormSchema, registerInputs} from "./registerFormSchema";
 import Styles from './styles.module.scss';
-import api from '../../../services/api';
-import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { UserAuthContext } from '../../../providers/UserAuthContext';
+
 
 const RegisterForm = () => {
+
+  const {userRegister} = useContext(UserAuthContext);
 
   const {
     register,
@@ -21,31 +24,6 @@ const RegisterForm = () => {
      userRegister(formData);
   }
 
-  const userRegister = async (formData) => {
-    const newFormData = {
-      email: formData.email,
-      password: "123456",
-      name: "John Doe",
-      bio: "Lorem ipsum dolor emet",
-      contact: "linkedin/in/johndoe",
-      course_module: "Segundo Módulo (Frontend avançado)"
-    }
-    try {
-      console.log(newFormData)
-      const {status, message} = await api.post('/users', newFormData);
-
-      if(status == 201){
-        toast.success("Usuario criado com sucesso!");
-       
-      }else{
-        toast.error(message);
-      }
-
-     
-    } catch (error) {
-      toast.error(error.message);
-    }
-  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={Styles.form}>

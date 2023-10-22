@@ -5,11 +5,16 @@ import {loginFormSchema, inputs} from "./loginFormSchema";
 import {zodResolver} from "@hookform/resolvers/zod";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import api from '../../../services/api';
+import { UserAuthContext } from '../../../providers/UserAuthContext';
+
 
 
 const LoginForm = () => {
+
+  const {userLogin} = useContext(UserAuthContext);
+
   const {
     register,
     handleSubmit, 
@@ -25,30 +30,7 @@ const LoginForm = () => {
     
   }
 
-  const userLogin = async (formData) => {
-    console.log(formData);
-
-    try{
-
-      const loginToken = async () => {
-         const {data, status, message} = await api.post('/sessions', formData);
-         if(status === 200){
-           toast.success("Login efetuado com sucesso!");
-           localStorage.setItem("@TOKEN", data.token);
-           navigate("/");
-
-         }else {
-           toast.error(message);
-         }
-         
-      }
-      loginToken();
-
-   }catch(error){
-      console.error("Erro na requisição:", error.message);
-   }
-  }
-
+  
   useEffect(()=> {
 
     const storedToken= localStorage.getItem("@TOKEN");
