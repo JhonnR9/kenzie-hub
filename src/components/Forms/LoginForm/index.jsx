@@ -4,9 +4,7 @@ import {useForm} from "react-hook-form";
 import {loginFormSchema, inputs} from "./loginFormSchema";
 import {zodResolver} from "@hookform/resolvers/zod";
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { useEffect, useContext } from "react";
-import api from '../../../services/api';
 import { UserAuthContext } from '../../../providers/UserAuthContext';
 
 
@@ -23,8 +21,6 @@ const LoginForm = () => {
 
   });
 
-  const navigate = useNavigate();
-
   const onSubmit = (formData) => {
     userLogin(formData);
     
@@ -36,7 +32,7 @@ const LoginForm = () => {
     const storedToken= localStorage.getItem("@TOKEN");
 
     if (storedToken) {
-      // navigate("/");
+     //  navigate("/");
     }
 
   }, []);

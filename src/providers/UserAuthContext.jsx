@@ -36,6 +36,7 @@ export const UserAuthProvider = ({children}) => {
        }
       }
 
+
       useEffect( ()=> {
         const storedToken = localStorage.getItem("@TOKEN");
     
@@ -55,6 +56,7 @@ export const UserAuthProvider = ({children}) => {
                 try {
                   const {data} = await api.get('/profile', config);
                   setUserData(data);
+                  navigate("/");
     
                 } catch (error) {
                   localStorage.removeItem("@TOKEN");
