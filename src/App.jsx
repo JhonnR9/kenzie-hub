@@ -1,16 +1,19 @@
-import { ToastContainer, toast } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/index.scss';
 import RoutesMain from './routes/RoutesMain'
+import {ModalProvider} from "./providers/ModalContext.jsx";
 
-const App = () => {   
+const App = () => {
 
-  return (
-    <>  
-      <RoutesMain/>
-      <ToastContainer />
-    </>
-  )
+    return (
+        <>
+            <ModalProvider>
+                <RoutesMain/>
+                <ToastContainer/>
+            </ModalProvider>
+        </>
+    )
 }
 
 export default App
