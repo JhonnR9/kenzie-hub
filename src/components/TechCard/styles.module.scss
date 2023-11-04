@@ -1,2 +1,16 @@
-//@import  '../../../styles/index.scss';
+@import '../../styles/index.scss';
 
+.flexbox {
+  background-color: map-get($map: $color-gray, $key: 4);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.items{
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  span{
+    cursor: pointer;
+  };
+}

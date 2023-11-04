@@ -59,7 +59,7 @@ export const TechProvider = ({children}) => {
     const updateTech = async (techUpdated) => {
 
         try {
-            await api.put(`/users/techs/${editingTech.id}`, techUpdated, {
+            const {data} =await api.put(`/users/techs/${editingTech.id}`, techUpdated, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -67,7 +67,7 @@ export const TechProvider = ({children}) => {
 
             const newTechList = techList.map((tech) => {
                 if (tech.id === editingTech.id) {
-                    return techUpdated;
+                    return data;
                 } else {
                     return tech;
                 }

@@ -21,5 +21,12 @@
 
   }
 
+}
 
+.techList{
+  background-color: map-get($map: $color-gray, $key: 3) ;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }

@@ -17,13 +17,13 @@ const TechListSection = () => {
                     setOpenModalCreator(true);
                 }} src={ButtonPulsImg}/>
             </div>
-            <div>
-                <ul>
-                    {techList?.map(tech => {
-                        return <TechCard key={tech.id} tech={tech}/>
-                    })}
-                </ul>
-            </div>
+
+            <ul className={Styles.techList}>
+                {techList?.map(tech => {
+                    return <TechCard key={tech.id} tech={tech}/>
+                })}
+            </ul>
+
         </section>
     );
 }
