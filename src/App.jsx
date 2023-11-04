@@ -8,10 +8,10 @@ const App = () => {
 
     return (
         <>
-            <ModalProvider>
-                <RoutesMain/>
-                <ToastContainer/>
-            </ModalProvider>
+
+            <RoutesMain/>
+            <ToastContainer/>
+
         </>
     )
 }

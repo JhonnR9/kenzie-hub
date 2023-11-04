@@ -3,16 +3,23 @@ import { BiPencil } from "react-icons/bi";
 import { BsTrash } from "react-icons/bs";
 import {useContext} from "react";
 import {ModalContext} from "../../providers/ModalContext.jsx";
-const TechCard = ({name, status}) => {
-    const {setOpenModalTechEdit} = useContext(ModalContext);
+import {TechContext} from "../../providers/TechContext.jsx";
+const TechCard = ({tech}) => {
+    const {setOpenModalTechEditor} = useContext(ModalContext);
+    const {setEditingTech, removeTech} = useContext(TechContext);
 
     return (
         <li >
-            <h2>{name}</h2>
+            <h2>{tech.title}</h2>
             <div>
-                <span>{status}</span>
-                <button onClick={() => {setOpenModalTechEdit(true);}}><BiPencil/></button>
-                <button><BsTrash/></button>
+                <span>{tech.status}</span>
+                <button onClick={() => {
+                    setEditingTech(tech);
+                    setOpenModalTechEditor(true);
+                }}><BiPencil/></button>
+                <button onClick={() => {
+                    removeTech(tech.id);
+                }}><BsTrash/></button>
             </div>
         </li>
     )

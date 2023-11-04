@@ -1,8 +1,9 @@
 import Styles from './styles.module.scss';
 import {TechContext} from "../../../providers/TechContext.jsx";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import TechCard from "../../TechCard/index.jsx";
 import {ModalContext} from "../../../providers/ModalContext.jsx";
+import ButtonPulsImg from "../../../assets/ButtonPlus.svg"
 
 const TechListSection = () => {
     const {techList} = useContext(TechContext);
@@ -10,14 +11,16 @@ const TechListSection = () => {
 
     return (
         <section className={Styles.container}>
-            <div>
+            <div className={Styles.flexbox}>
                 <h2 className="font-title-1 font-title-1--color-gray-0">{"Tecnologias"}</h2>
-                <button onClick={() => {setOpenModalCreator(true);}}>+</button>
+                <img onClick={() => {
+                    setOpenModalCreator(true);
+                }} src={ButtonPulsImg}/>
             </div>
             <div>
                 <ul>
                     {techList?.map(tech => {
-                        return <TechCard key={tech.id} name={tech.title} status={tech.status}/>
+                        return <TechCard key={tech.id} tech={tech}/>
                     })}
                 </ul>
             </div>

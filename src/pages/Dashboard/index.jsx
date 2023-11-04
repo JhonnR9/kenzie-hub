@@ -14,7 +14,7 @@ import EditTechModal from "../../components/modals/EditTechModal/index.jsx";
 const Dashboard = () => {
     const navigate = useNavigate();
     const {userData, setUserData} = useContext(UserAuthContext);
-    const {openModalTechCreator, openModalTechEdit} = useContext(ModalContext);
+    const {openModalTechCreator, openModalTechEditor} = useContext(ModalContext);
 
     useEffect(() => {
         const storedToken = localStorage.getItem("@TOKEN");
@@ -48,7 +48,7 @@ const Dashboard = () => {
     return (
         <TechProvider>
             {openModalTechCreator ? <CreateTechModal/> : null}
-            {openModalTechEdit ? <EditTechModal/> : null}
+            {openModalTechEditor ? <EditTechModal/> : null}
             <HeaderButton buttonName={"Voltar"} dashboard={true}/>
             <main>
                 <UserSection userName={userData?.name} module={userData?.course_module}/>

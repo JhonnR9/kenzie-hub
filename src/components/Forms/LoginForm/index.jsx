@@ -3,7 +3,6 @@ import Styles from './styles.module.scss';
 import {useForm} from "react-hook-form";
 import {loginFormSchema, inputs} from "./loginFormSchema";
 import {zodResolver} from "@hookform/resolvers/zod";
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useContext } from "react";
 import { UserAuthContext } from '../../../providers/UserAuthContext';
 
@@ -31,9 +30,6 @@ const LoginForm = () => {
 
     const storedToken= localStorage.getItem("@TOKEN");
 
-    if (storedToken) {
-     //  navigate("/");
-    }
 
   }, []);
 
